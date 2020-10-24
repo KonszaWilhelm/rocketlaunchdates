@@ -1,0 +1,30 @@
+p.lead {
+    font-weight: 400;
+}
+h1.display-3 {
+    font-weight: 400;
+}
+
+
+i.fas.fa-cart-plus {
+    color: green;
+}
+
+div.card.mx-3 {
+    width: 80%;
+}
+
+div.card.mx-3-md{
+    width:30%;
+}
+
+button.btn.border:hover {
+    background-color: green;
+}
+
+button.btn.border:hover  i.fas.fa-cart-plus{
+
+    color: white;
+
+
+}

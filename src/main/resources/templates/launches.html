@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Launches</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+
+<div th:replace="header :: myheader"></div>
+
+
+<div class="container-wrapper mx-3 mt-5 pt-5">
+    <div class="container">
+        <section >
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Launch List</h1>
+                    <h6 class="ml-1">All launches</h6>
+                </div>
+            </div>
+        </section>
+
+
+        <a th:href="@{showNewLaunchForm}" class="btn btn-outline-dark">
+            Add Launch
+        </a>
+        <table class="table table-dark table-responsive-md text-center table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Nr.</th>
+                <th scope="col">Mission Name</th>
+                <th scope="col">Launch Service Provider</th>
+                <th scope="col">Rocket Type</th>
+                <th scope="col">Launch Date</th>
+                <th scope="col">T Minus</th>
+                <th scope="col">Actions</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="launch : ${listLaunches}">
+                <th scope="row" th:text="${launch.idLaunch}"></th>
+                <td th:text="${launch.missionName}"></td>
+                <td th:text="${launch.launchServiceProvider}"></td>
+                <td th:text="${launch.rocketType}"></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a th:href="@{/showLaunchUpdateForm/{id}(id=${launch.idLaunch})}"
+                       class="btn btn-primary">Update</a>
+
+                    <a th:href="@{/deleteLaunch/{id}(id=${launch.idLaunch})}"
+                       class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<body>
+<div th:fragment="myheader">
+
+    <!--Meta Tags-->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+    <title>Launch Countdown Application</title>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark py-1" href='#' th:href="@{/}">
+        <div class="container pl-4 ">
+
+            <a class="navbar-brand d-md-none">
+                <span class="navbar-brand mb-0 h1">Launch App</span>
+            </a>
+            <a class="d-none d-md-block navbar-brand pt-4 my-0 position-absolute " href="/">
+                <img src="../static/images/navbrand.png" th:src="@{images/navbrand.png}" id="navlog" width="120"  alt="astronaut chilling">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" th:href="@{/}">Home
+<!--                            <span class="sr-only">(current)</span>-->
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/launches}">Launches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/products}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/logout}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/showReminderForm}">Reminders</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<div th:replace="header :: myheader"></div>
+
+
+<!--<div class="container-wrapper">-->
+<!--    <div class="container">-->
+
+
+<!--        <section class="mt-5 pt-5">-->
+<!--            <div class="jumbotron">-->
+<!--                <div class="container">-->
+<!--                    <h1>Products</h1>-->
+<!--                    <h6 class="ml-1">Currently available products</h6>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+
+<!--        <a th:href="@{showNewProductForm}" class="btn btn-outline-dark">-->
+<!--            Add Product-->
+<!--        </a>-->
+<!--        <table class="table table-dark table-responsive-md text-center table-hover">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th scope="col">Nr.</th>-->
+<!--                <th scope="col">Product Name</th>-->
+<!--                <th scope="col">Product Description</th>-->
+<!--                <th scope="col">Product Price</th>-->
+<!--                <th scope="col">Actions</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="product : ${listProducts}">-->
+<!--                <th scope="row" th:text="${product.idProduct}"></th>-->
+<!--                <td th:text="${product.productName}"></td>-->
+<!--                <td th:text="${product.productDescription}"></td>-->
+<!--                <td th:text="${product.productPrice}"></td>-->
+<!--                <td>-->
+<!--                    <a class="btn btn-primary" th:href="@{/showFormForUpdate/{id} (id=${product.idProduct})}">Update</a>-->
+
+<!--                    <a class="btn btn-danger" th:href="@{/deleteProduct/{id} (id=${product.idProduct})}">Delete</a>-->
+<!--                </td>-->
+<!--            </tr>-->
+
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container-wrapper">
+    <div class="container">
+
+        <section class=" mx-3 mt-5 pt-5">
+
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Products</h1>
+                    <h6 class="ml-1">Currently available products</h6>
+
+                </div>
+            </div>
+            <a th:href="@{showNewProductForm}" class="btn btn-outline-dark">
+                Add Product
+            </a>
+        </section>
+
+
+        <section id="gallery">
+
+            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center pt-4">
+
+                <div class="card mx-3 mb-4 " th:each="product : ${listProducts}">
+                    <img src="../static/images/pattern2.jpeg" th:src="@{images/pattern2.jpeg}" class="card-img-top"
+                         alt="...">
+                    <div class="card-body">
+                        <!--                        <h5 class="card-title" th:text="${product.idProduct}"></h5>-->
+                        <h5 class="card-title" th:text="${product.productName}"></h5>
+
+                        <p class="card-text" th:text="${product.idProduct}"></p>
+                        <p class="card-text" th:text="${product.productDescription}"></p>
+
+                        <p><span class="card-text" th:text="${product.productPrice}"></span>$</p>
+
+
+                        <a class="btn btn-outline-success"
+                           th:href="@{/showFormForUpdate/{id} (id=${product.idProduct})}">Update
+                        </a>
+                        <a class="btn btn-danger" th:href="@{/deleteProduct/{id} (id=${product.idProduct})}">Delete</a>
+                        <button class="btn border border-1"><i class="fas fa-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>

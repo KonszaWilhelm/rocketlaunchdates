@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Launch Countdown Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:replace="header :: myheader"></div>
+
+<div class="container-wrapper">
+    <div class="container">
+        <section class="mt-5 pt-5">
+            <div class="jumbotron">
+                <div class="container d-flex flex-row bd-highlight align-items-center">
+                    <h1 class="justify-content-start flex-fill">Hi there space cowboy!</h1>
+                    <img class="justify-content-end flex-fill" src="../static/images/navlog1.png" th:src="@{images/navlog1.png}" width="200">
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Reminders</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+
+<div th:replace="header :: myheader"></div>
+
+
+
+
+<div class="container-wrapper">
+    <div class="container mt-5 pt-5">
+
+        <div class="container">
+            <h1>Get reminders</h1>
+            <hr>
+
+            <form action="#" th:action="@{contact}" th:object="${user}" method="post">
+                <!--        <div class="form-group">-->
+                <!--            <label for="formGroupExampleInput1">ID</label>-->
+                <!--            <input type="number" th:field="*{idUser}" class="form-control" id="formGroupExampleInput1" readonly-->
+                <!--                   placeholder="Another input">-->
+                <!--        </div>-->
+                <!--        <div class="form-group">-->
+                <!--            <label class="control-label" for="firstName">First Name</label>-->
+                <!--            <input id="firstName" th:field="*{firstName}" type="text"-->
+                <!--                   placeholder="Enter First Name Here.." class="form-control">-->
+                <!--        </div>-->
+                <!--        <div class="form-group">-->
+                <!--            <label class="control-label" for="lastName">Last Name</label>-->
+                <!--            <input id="lastName" th:field="*{lastName}" type="text"-->
+                <!--                   placeholder="Enter Last Name Here.." class="form-control">-->
+
+                <!--        </div>-->
+                <div class="form-group">
+                    <label class="control-label" for="email">Email Address</label>
+                    <input id="email" th:field="*{email}" type="text" placeholder="Enter Email Address Here.."
+                           class="form-control">
+
+                </div>
+                <!--                <div class="form-group">-->
+                <!--                    <label class="control-label" for="address">Address</label>-->
+                <!--                    <textarea id="address" th:field="*{address}" placeholder="Enter Address Here.." rows="3"-->
+                <!--                              class="form-control"></textarea>-->
+                <!--                </div>-->
+
+                <button type="submit" class="btn btn-primary mb-2">Get Email</button>
+            </form>
+
+
+            <a th:href="@{/}">Back Home</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

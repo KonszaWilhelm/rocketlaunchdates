@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" href='#' th:href="@{/}">
+    <div class="container pl-4  ">
+        <a class="navbar-brand py-0 my-0" href="#"><img src="../static/images/navlog1.png" th:src="@{images/navlog1.png}" width="40" ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" th:href="@{/}">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/launches}">Launches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{products}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/logout}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/showReminderForm/2}">Reminders</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-wrapper">
+    <div class="container">
+        <section class="mt-5 pt-5">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Cart</h1>
+                    <h6 class="ml-1">All the selected products in your shopping cart</h6>
+                </div>
+            </div>
+        </section>
+
+        <br/><br/><br/>
+
+        <table class="table table-hover">
+            <tr>
+                <th>Product</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="#" class="label label-danger">
+                    remove</a></td>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Grand Total</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

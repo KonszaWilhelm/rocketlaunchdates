@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Launches</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:replace="header :: myheader"></div>
+
+
+<div class="container-wrapper">
+    <div class="container">
+        <div class="container mt-5 pt-5">
+            <h1>Launches</h1>
+            <hr>
+            <h2>Add New Launch</h2>
+
+            <form action="#" th:action="@{createLaunch}" th:object="${launch}" method="POST">
+                <!--        <div class="form-group">-->
+                <!--            <label for="formGroupExampleInput1">ID</label>-->
+                <!--            <input type="number" class="form-control" id="formGroupExampleInput1" placeholder="Another input">-->
+                <!--        </div>-->
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Mission Name</label>
+                    <input type="text" th:field="*{missionName}" class="form-control" id="formGroupExampleInput2"
+                           placeholder="Example input">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput3">LSP</label>
+                    <input type="text" th:field="*{launchServiceProvider}" class="form-control"
+                           id="formGroupExampleInput3"
+                           placeholder="Another input">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput4">Rocket Type</label>
+                    <input type="text" th:field="*{rocketType}" class="form-control" id="formGroupExampleInput4"
+                           placeholder="Example input">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">Launch Date</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Another input">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput6">T minus</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Example input">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Save</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
