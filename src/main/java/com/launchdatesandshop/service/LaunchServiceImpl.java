@@ -48,8 +48,8 @@ public class LaunchServiceImpl implements LaunchService {
             launchUpdate.setMissionName(launch.getMissionName());
             launchUpdate.setLaunchServiceProvider(launch.getLaunchServiceProvider());
             launchUpdate.setRocketType(launch.getRocketType());
-//            launchUpdate.setLaunchDate(launch.getLaunchDate());
-//            launchUpdate.setTMinus(launch.getTMinus());
+            launchUpdate.setLaunchDate(launch.getLaunchDate());
+
             //saving the entity
             launchRepository.save(launchUpdate);
             return launchUpdate;
@@ -62,9 +62,9 @@ public class LaunchServiceImpl implements LaunchService {
     @Override
     public void deleteLaunch(long idLaunch) {
         Optional<Launch> launchDb = this.launchRepository.findById(idLaunch);
-        if (launchDb.isPresent()){
+        if (launchDb.isPresent()) {
             this.launchRepository.delete(launchDb.get());
-        }else{
+        } else {
             throw new ResourceNotFoundException("Launch not found with id: " + idLaunch);
         }
 

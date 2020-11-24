@@ -16,9 +16,9 @@ public class Order {
 //    private String shippingMethod;
     private String orderStatus;
     private BigDecimal orderTotal;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<CartItem> cartItemList;
+//
+//    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+//    private List<CartItem> cartItemList;
 
     //@OneToOne(cascade= CascadeType.ALL)
     //private shippingAddress shippingAddress;
@@ -53,13 +53,13 @@ public class Order {
         this.orderTotal = orderTotal;
     }
 
-    public List<CartItem> getCartItemList() {
-        return cartItemList;
-    }
-
-    public void setCartItemList(List<CartItem> cartItemList) {
-        this.cartItemList = cartItemList;
-    }
+//    public List<CartItem> getCartItemList() {
+//        return cartItemList;
+//    }
+//
+//    public void setCartItemList(List<CartItem> cartItemList) {
+//        this.cartItemList = cartItemList;
+//    }
 
     public User getUser() {
         return user;

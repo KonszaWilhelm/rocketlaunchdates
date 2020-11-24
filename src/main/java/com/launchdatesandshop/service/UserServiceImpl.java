@@ -1,8 +1,9 @@
 package com.launchdatesandshop.service;
 
 import com.launchdatesandshop.dto.UserRegistrationDto;
-import com.launchdatesandshop.entities.Product;
+
 import com.launchdatesandshop.entities.Role;
+import com.launchdatesandshop.entities.ShoppingCart;
 import com.launchdatesandshop.entities.User;
 import com.launchdatesandshop.exception.ResourceNotFoundException;
 import com.launchdatesandshop.repositories.UserRepository;
@@ -14,9 +15,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,8 +32,8 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
 
-
     @Override
+    //@Transactional
     public User saveUser(UserRegistrationDto registrationDto) {
         User user = new User(
                 registrationDto.getFirstName(),
@@ -42,25 +43,33 @@ public class UserServiceImpl implements UserService {
                         registrationDto.getPassword()),
                 registrationDto.getAddress(),
                 Arrays.asList(new Role("ROLE_USER")));
-        //Role hardcoded, should be changed later
-
+        //Role should be changed later
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUser(user);
+        user.setShoppingCart(shoppingCart);
         return userRepository.save(user);
     }
 
-        //////
     @Override
-    public User getUserById(long userId) {
-        Optional<User> userDb = this.userRepository.findById(userId);
-
-        if (userDb.isPresent()) {
-            return userDb.get();
-        } else {
-            throw new ResourceNotFoundException("Record/product not found with id: " + userId);
-        }
-
+    public User getUserByEmail(String email) {
+       User user = userRepository.findByEmail(email);
+        return user;
     }
 
-        //////
+    //////
+//    @Override
+//    public User getUserById(long userId) {
+//        Optional<User> userDb = this.userRepository.findById(userId);
+//
+//        if (userDb.isPresent()) {
+//            return userDb.get();
+//        } else {
+//            throw new ResourceNotFoundException("Record/product not found with id: " + userId);
+//        }
+//
+//    }
+
+    //////
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 

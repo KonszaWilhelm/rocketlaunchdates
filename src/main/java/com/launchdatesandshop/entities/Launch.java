@@ -1,7 +1,6 @@
 package com.launchdatesandshop.entities;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "launches")
@@ -22,10 +21,7 @@ public class Launch {
     private String rocketType;
 
     @Column(name = "launch_date")
-    private LocalDateTime launchDate;
-
-    @Column(name = "t_minus")
-    private Long tMinus;
+    private String launchDate;
 
     public Long getIdLaunch() {
         return idLaunch;
@@ -59,6 +55,14 @@ public class Launch {
         this.rocketType = rocketType;
     }
 
+    public String getLaunchDate() {
+        return launchDate;
+    }
+
+    public void setLaunchDate(String launchDate) {
+        this.launchDate = launchDate;
+    }
+
     @Override
     public String toString() {
         return "Launch{" +
@@ -67,7 +71,7 @@ public class Launch {
                 ", launchServiceProvider='" + launchServiceProvider + '\'' +
                 ", rocketType='" + rocketType + '\'' +
                 ", launchDate=" + launchDate +
-                ", tMinus=" + tMinus +
+
                 '}';
     }
 }

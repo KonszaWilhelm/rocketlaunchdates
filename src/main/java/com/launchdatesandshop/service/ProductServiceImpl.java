@@ -49,14 +49,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProducts() {
-//        return this.productRepository.findAll();
         return productRepository.findAll();
 
     }
 
     @Override
     public Product getProductById(long idProduct) {
-        Optional<Product> productDb = this.productRepository.findById(idProduct);
+        Optional<Product> productDb = productRepository.findById(idProduct);
 
         if (productDb.isPresent()) {
             return productDb.get();
@@ -68,10 +67,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteProduct(long idProduct) {
-        Optional<Product> productDb = this.productRepository.findById(idProduct);
+        Optional<Product> productDb = productRepository.findById(idProduct);
 
         if (productDb.isPresent()) {
-            this.productRepository.delete(productDb.get());
+            productRepository.delete(productDb.get());
         } else {
             throw new ResourceNotFoundException("Product not found with id: " + idProduct);
         }

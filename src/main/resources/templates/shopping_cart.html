@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart Page</title>
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+
+
+<div th:replace="header :: myheader"></div>
+<body>
+
+<div class="container pt-4">
+
+
+    <div class="row">
+        <div class="col-8"><h4>Products</h4></div>
+        <div class="col-2"><h4>Price</h4></div>
+        <div class="col-2"><h4 class="text-right">Qty</h4></div>
+    </div>
+
+
+    <!--            -->
+    <div class="row" th:each="cartItem: ${cartItemList}">
+        <form th:action="@{/shoppingcart/updateCartItem}" method="post">
+            <hr/>
+            <div class="col-xs-2">
+                <a th:href=""></a>
+            </div>
+            <hr/>
+        </form>
+    </div>
+
+
+
+
+    <div class="row pt-4 mt-4">
+        <div class="col text-left">
+            <a class="btn btn-primary" th:href="@{/products}">Continue Shopping</a>
+        </div>
+        <div class="col text-right">
+            <a class="btn btn-primary" th:href="@{/checkout(id=${shoppingCart.id})}">Checkout</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <br/>
+        <div th:if="${notEnoughStock}" class="alert alert-warning">
+            Not enough stock.
+        </div>
+        <div th:if="${emptyCart}" class="alert alert-warning">
+            Cart empty.
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

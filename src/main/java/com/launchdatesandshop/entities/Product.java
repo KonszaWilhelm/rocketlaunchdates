@@ -1,6 +1,7 @@
 package com.launchdatesandshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.List;
@@ -29,9 +30,12 @@ public class Product {
     @Column(name = "product_price")
     private double productPrice;
 
-    @OneToMany(mappedBy = "product")
-    @JsonIgnore
-    private List<ProductToCartItem> productToCartItemList;
+    @Column(name = "product_img")
+    private String productImg;
+
+    @ManyToOne
+    private CartItem cartItem;
+
 
     public Product() {
     }
@@ -83,4 +87,14 @@ public class Product {
     public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
+
+    public String getProductImg() {
+        return productImg;
+    }
+
+    public void setProductImg(String productImg) {
+        this.productImg = productImg;
+    }
+
+
 }

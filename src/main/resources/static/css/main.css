@@ -28,3 +28,7 @@ button.btn.border:hover  i.fas.fa-cart-plus{
 
 
 }
+img.card-img-top{
+    min-height: 240px;
+    width: auto;
+}

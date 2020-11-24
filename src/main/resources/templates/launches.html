@@ -34,7 +34,7 @@
                 <th scope="col">Launch Service Provider</th>
                 <th scope="col">Rocket Type</th>
                 <th scope="col">Launch Date</th>
-                <th scope="col">T Minus</th>
+
                 <th scope="col">Actions</th>
 
 
@@ -46,8 +46,9 @@
                 <td th:text="${launch.missionName}"></td>
                 <td th:text="${launch.launchServiceProvider}"></td>
                 <td th:text="${launch.rocketType}"></td>
-                <td></td>
-                <td></td>
+                <td th:text="${launch.launchDate}"></td>
+<!--                <td th:text="${}"></td>-->
+
                 <td>
                     <a th:href="@{/showLaunchUpdateForm/{id}(id=${launch.idLaunch})}"
                        class="btn btn-primary">Update</a>

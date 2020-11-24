@@ -21,7 +21,7 @@
                 <span class="navbar-brand mb-0 h1">Launch App</span>
             </a>
             <a class="d-none d-md-block navbar-brand pt-4 my-0 position-absolute " href="/">
-                <img src="../static/images/navbrand.png" th:src="@{images/navbrand.png}" id="navlog" width="120"  alt="astronaut chilling">
+                <img src="../static/images/navbrand.png" th:src="@{../images/navbrand.png}" id="navlog" width="120"  alt="astronaut chilling">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -47,6 +47,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" th:href="@{/showReminderForm}">Reminders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/shoppingCart/cart}">Cart</a>
                     </li>
                 </ul>
             </div>

@@ -41,12 +41,9 @@
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput5">Launch Date</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Another input">
+                    <input type="datetime-local" th:field="*{launchDate}" class="form-control" id="formGroupExampleInput5" placeholder="Another input">
                 </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput6">T minus</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Example input">
-                </div>
+
                 <button type="submit" class="btn btn-primary mb-2">Save</button>
 
             </form>
