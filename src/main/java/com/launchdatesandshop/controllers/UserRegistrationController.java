@@ -3,6 +3,7 @@ package com.launchdatesandshop.controllers;
 import com.launchdatesandshop.dto.UserRegistrationDto;
 
 import com.launchdatesandshop.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/registration")
 public class UserRegistrationController {
 
-    //DI
+    @Autowired
     private UserService userService;
 
     public UserRegistrationController(UserService userService) {
@@ -28,13 +29,12 @@ public class UserRegistrationController {
     }
 
 
-    //method handler to return reg.html
     @GetMapping
     public String showRegistrationForm(Model model) {
         return "registration";
     }
 
-    //Post request method handler
+
     @PostMapping
     //passing user object and binding it to dto obj
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {

@@ -13,7 +13,7 @@ public class ShoppingCart {
     private Long id;
     private BigDecimal grandTotal;
 
-    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY) /*mappedBy = "shoppingCart", , fetch = FetchType.LAZY //    @JsonIgnore*/
     @JsonIgnore
     private List<CartItem> cartItemList;
 
@@ -36,8 +36,11 @@ public class ShoppingCart {
         this.grandTotal = grandTotal;
     }
 
+
     public List<CartItem> getCartItemList() {
         return cartItemList;
+
+
     }
 
     public void setCartItemList(List<CartItem> cartItemList) {

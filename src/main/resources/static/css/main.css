@@ -18,11 +18,11 @@ div.card.mx-3-md{
     width:30%;
 }
 
-button.btn.border:hover {
+a.btn.border:hover {
     background-color: green;
 }
 
-button.btn.border:hover  i.fas.fa-cart-plus{
+a.btn.border:hover  i.fas.fa-cart-plus{
 
     color: white;
 

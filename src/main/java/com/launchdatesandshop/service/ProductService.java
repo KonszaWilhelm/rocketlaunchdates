@@ -4,7 +4,6 @@ import com.launchdatesandshop.entities.Product;
 
 import java.util.List;
 
-//Interface with all the CRUD methods
 
 public interface ProductService  {
 

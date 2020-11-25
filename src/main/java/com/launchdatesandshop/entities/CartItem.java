@@ -1,7 +1,6 @@
 package com.launchdatesandshop.entities;
 
 
-
 import javax.persistence.*;
 
 
@@ -19,6 +18,7 @@ public class CartItem {
     @ManyToOne
     @JoinColumn(name = "shopping_cart_id")
     private ShoppingCart shoppingCart;
+
     public Long getId() {
         return id;
     }
@@ -50,4 +50,6 @@ public class CartItem {
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
+
+
 }

@@ -1,12 +1,8 @@
 package com.launchdatesandshop.controllers;
 
 import com.launchdatesandshop.entities.Launch;
-import com.launchdatesandshop.entities.User;
-import com.launchdatesandshop.repositories.UserRepository;
 import com.launchdatesandshop.service.LaunchService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,9 +40,7 @@ public class LaunchController {
 
     @GetMapping("/showLaunchUpdateForm/{id}")
     public String showLaunchUpdateForm(@PathVariable(value = "id") long id, Model model) {
-        //get Launch from Service
         Launch launch = launchService.getLaunchById(id);
-        //set launch object to Model
         model.addAttribute("launch", launch);
 
         return "update_launch";

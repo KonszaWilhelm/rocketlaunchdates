@@ -3,7 +3,6 @@ package com.launchdatesandshop.controllers;
 import com.launchdatesandshop.entities.Product;
 import com.launchdatesandshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +45,6 @@ public class ProductController {
 
         // set product as a model / mv attribute to pre-populate the form
         modelAndView.addObject("product", product);
-        //model.addAttribute("product", product);
 
         // set view which we return
         modelAndView.setViewName("update_product");
@@ -57,7 +55,6 @@ public class ProductController {
     @GetMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable(value = "id") long id) {
 
-        // call delete product method
         this.productService.deleteProduct(id);
         return "redirect:/products";
     }

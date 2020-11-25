@@ -1,8 +1,9 @@
-package com.launchdatesandshop.service;
+package com.launchdatesandshop.service.impl;
 
 import com.launchdatesandshop.entities.Product;
 import com.launchdatesandshop.exception.ResourceNotFoundException;
 import com.launchdatesandshop.repositories.ProductRepository;
+import com.launchdatesandshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +12,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
-//You can skip Transactional as it is handled internally
 public class ProductServiceImpl implements ProductService {
 
-    //Injecting Product Repository should change it to constructor injection later
+
 
     @Autowired
     private ProductRepository productRepository;
@@ -29,17 +28,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product) {
-        //fetching record from DB
+
         Optional<Product> productDb = this.productRepository.findById(product.getIdProduct());
 
         if (productDb.isPresent()) {
-            // getting product obj from Optional
+
             Product productUpdate = productDb.get();
             productUpdate.setIdProduct(product.getIdProduct());
             productUpdate.setProductName(product.getProductName());
             productUpdate.setProductDescription(product.getProductDescription());
             productUpdate.setProductPrice(product.getProductPrice());
-            //saving the entity
+
             productRepository.save(productUpdate);
             return productUpdate;
         } else {

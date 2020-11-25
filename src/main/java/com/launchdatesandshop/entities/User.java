@@ -1,6 +1,5 @@
 package com.launchdatesandshop.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -33,14 +32,13 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL) /*, mappedBy = "user"*/
     private ShoppingCart shoppingCart;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, /*List<String> address,*/String address, Collection<Role> roles) {
+    public User(String firstName, String lastName, String email, String password, String address, Collection<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

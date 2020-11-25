@@ -1,8 +1,9 @@
-package com.launchdatesandshop.service;
+package com.launchdatesandshop.service.impl;
 
 import com.launchdatesandshop.entities.Launch;
 import com.launchdatesandshop.exception.ResourceNotFoundException;
 import com.launchdatesandshop.repositories.LaunchRepository;
+import com.launchdatesandshop.service.LaunchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,9 +43,9 @@ public class LaunchServiceImpl implements LaunchService {
 
         Optional<Launch> launchDb = launchRepository.findById(launch.getIdLaunch());
         if (launchDb.isPresent()) {
-            // getting product obj from Optional
+
             Launch launchUpdate = launchDb.get();
-//            launchUpdate.setIdProduct(launch.getIdProduct());
+
             launchUpdate.setMissionName(launch.getMissionName());
             launchUpdate.setLaunchServiceProvider(launch.getLaunchServiceProvider());
             launchUpdate.setRocketType(launch.getRocketType());

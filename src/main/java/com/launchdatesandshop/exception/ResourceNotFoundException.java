@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ResourceNotFoundException extends RuntimeException{
     //Whenever the record is not in DB
 
-    //What's serial version UID
     private static final long serialVersionUID = 1L;
 
     public ResourceNotFoundException(String message) {

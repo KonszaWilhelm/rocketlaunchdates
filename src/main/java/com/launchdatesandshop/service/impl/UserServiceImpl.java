@@ -1,4 +1,4 @@
-package com.launchdatesandshop.service;
+package com.launchdatesandshop.service.impl;
 
 import com.launchdatesandshop.dto.UserRegistrationDto;
 
@@ -7,6 +7,7 @@ import com.launchdatesandshop.entities.ShoppingCart;
 import com.launchdatesandshop.entities.User;
 import com.launchdatesandshop.exception.ResourceNotFoundException;
 import com.launchdatesandshop.repositories.UserRepository;
+import com.launchdatesandshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,8 +24,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
-    //constructor based injection, should be changed for the others as well
-    //injecting password encryptors
+
     @Autowired
     private UserRepository userRepository;
 
@@ -33,7 +33,6 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    //@Transactional
     public User saveUser(UserRegistrationDto registrationDto) {
         User user = new User(
                 registrationDto.getFirstName(),
@@ -52,24 +51,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByEmail(String email) {
-       User user = userRepository.findByEmail(email);
-        return user;
+        return userRepository.findByEmail(email);
+
     }
 
-    //////
-//    @Override
-//    public User getUserById(long userId) {
-//        Optional<User> userDb = this.userRepository.findById(userId);
-//
-//        if (userDb.isPresent()) {
-//            return userDb.get();
-//        } else {
-//            throw new ResourceNotFoundException("Record/product not found with id: " + userId);
-//        }
-//
-//    }
-
-    //////
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
@@ -83,13 +68,13 @@ public class UserServiceImpl implements UserService {
                 mapRolesToAuthorities(user.getRoles()));
     }
 
-    //look up the below s no idea what it does
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        //converting roles to authorities
 
-        //converting roles into stream, on top of stream we map a role and convert role to SimpleGrantedAuthority,
-        // passed role name as param and Collected a stream into a list
-        //try to understand this o_O
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+        /*
+           converting roles to authorities
+           converting roles into stream, on top of stream we map a role and convert role to SimpleGrantedAuthority,
+           passed role name as param and Collected a stream into a list
+        */
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRole())).collect(Collectors.toList());
     }
 

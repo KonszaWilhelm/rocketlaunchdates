@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.List;
 
 
 @Controller
-@RequestMapping("/shoppingCart")
+
 public class ShoppingCartController {
 
     @Autowired
@@ -28,11 +29,10 @@ public class ShoppingCartController {
     CartItemService cartItemService;
 
 
-
-    @GetMapping("/")
+    @GetMapping("/shoppingCart")
     public String viewHomePage(Model model, Principal principal) {
         User user = userService.getUserByEmail(principal.getName());
-        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartById(user.getShoppingCart().getId());
+        ShoppingCart shoppingCart = user.getShoppingCart();
         model.addAttribute("shoppingCart", shoppingCart);
         model.addAttribute("cartItemList", shoppingCart.getCartItemList());
 
@@ -40,21 +40,41 @@ public class ShoppingCartController {
     }
 
 
-    @GetMapping("/addToCart/{id}")
-    public String addToShoppingCart(@PathVariable(value = "id") long id, Principal principal) {
+    @RequestMapping("/addToCart/{id}")
+    public ModelAndView addToShoppingCart(@PathVariable(value = "id") long id, Principal principal, ModelAndView modelAndView) {
         Product product = productService.getProductById(id);
-        CartItem cartItem = new CartItem();
-        cartItem.setProduct(product);
-        cartItem.setQuantity(1);
-        cartItemService.addCartItem(cartItem);
+        CartItem cartItem = cartItemService.addProductToCartItem(product, 1);
 
         User user = userService.getUserByEmail(principal.getName());
-
-        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartById(user.getShoppingCart().getId());
+        ShoppingCart shoppingCart = user.getShoppingCart();
         List<CartItem> cartItemList = shoppingCart.getCartItemList();
-        cartItemList.add(cartItem);
-        return "redirect:/shoppingCart/";
+
+        if (product.getProductCount() > 0) {
+            cartItemList.add(cartItem);
+            product.setProductCount(product.getProductCount() - 1);
+        } else
+            modelAndView.addObject("notEnoughStock", true);
+
+        shoppingCartService.update(cartItemList);
+        modelAndView.setViewName("redirect:/shoppingCart");
+        return modelAndView;
     }
+
+    @GetMapping("/deleteCartItem/{id}")
+    public String deleteCartItem(@PathVariable(value = "id") Long id) {
+        cartItemService.deleteCartItem(id);
+        return "redirect:/shoppingCart";
+    }
+
+    @PostMapping("/updateQuantity/{id}")
+    public String updateCartItemQuantity(@PathVariable(value = "id") long id, @RequestParam("quantity") int quantity) {
+        //@ModelAttribute("id") Long cartItemId,
+        CartItem cartItem = cartItemService.getCartItemById(id);
+        cartItem.setQuantity(quantity);
+        cartItemService.updateCartItem(cartItem);
+        return "redirect:/shoppingCart";
+    }
+
 
 }
 
